@@ -8,7 +8,7 @@ in
     enable = mkEnableOption "dwm window manager";
     hasTouchpad = mkEnableOption "Enable touchpad support";
     displayBatteryStatus = mkEnableOption "Display battery status in status bar";
-    xsessionInitExtra = mkOption {
+    xInitExtra = mkOption {
       type = types.str;
       default = "";
       description = ".xsession init extra";
@@ -54,12 +54,7 @@ in
 
     services.xserver = {
       enable = true;
-      displayManager.defaultSession = "none+dwm";
-      displayManager.lightdm = {
-        background = "#000000";
-        greeters.slick.enable = true;
-      };
-      windowManager.dwm.enable = true;
+      displayManager.startx.enable = true;
       layout = "se";
       xkbOptions = "ctrl:nocaps";
       libinput = mkIf cfg.hasTouchpad {
@@ -70,18 +65,28 @@ in
       };
     };
 
+    services.greetd = {
+      enable = true;
+	    settings = rec {
+	      initial_session = {
+	        command = "${pkgs.xorg.xinit}/bin/startx";
+          user = config.user.name;
+	      };
+        default_session = initial_session;
+	    };
+    };
+
     environment.systemPackages = with pkgs; [
+      dwm
       alacritty
       dmenu
       dwmblocks
     ];
 
-    home.extraOptions.xsession = {
-      enable = true;
-      initExtra = ''
-        ${pkgs.xorg.xsetroot}/bin/xsetroot -bg black
-        ${pkgs.dwmblocks}/bin/dwmblocks &
-      '' + cfg.xsessionInitExtra;
-    };
+    home.extraOptions.home.file.".xinitrc".text = cfg.xInitExtra + ''
+      ${pkgs.xorg.xsetroot}/bin/xsetroot -bg black
+      ${pkgs.dwmblocks}/bin/dwmblocks &
+      ${pkgs.dwm}/bin/dwm
+    '';
   };
 }
