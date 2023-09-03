@@ -14,6 +14,16 @@
 
   outputs = inputs: {    
     nixosConfigurations = {
+      desktop = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = with inputs; [
+          ./systems/desktop
+          ./modules
+          { networking.hostName = "desktop"; }
+          home-manager.nixosModules.home-manager
+          impermanence.nixosModule
+        ];
+      };
       laptop = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = with inputs; [

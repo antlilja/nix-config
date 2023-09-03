@@ -20,5 +20,6 @@
     ./apps/discord.nix
     ./apps/slack.nix
     ./apps/spotify.nix
+    ./apps/steam.nix
   ];
 }
