@@ -18,7 +18,10 @@
     develop.enable = true;
     firefox.enable = true;
     discord.enable = true;
-    slack.enable = true;
+    slack = {
+      enable = true;
+      wayland = true;
+    };
     spotify.enable = true;
   };
 
