@@ -56,6 +56,7 @@ in
       bemenu
       somebar
       someblocks
+      wlr-randr
     ]; 
 
     home.extraOptions.programs.foot = {
