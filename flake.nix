@@ -23,6 +23,7 @@
           home-manager.nixosModules.home-manager
           impermanence.nixosModule
         ];
+        specialArgs = { inherit inputs; };
       };
       laptop = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -33,6 +34,7 @@
           home-manager.nixosModules.home-manager
           impermanence.nixosModule
         ];
+        specialArgs = { inherit inputs; };
       };
     };
   };
