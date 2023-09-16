@@ -11,6 +11,7 @@
 
   system.networkmanager.enable = true;
   system.pipewire.enable = true;
+  system.bluetooth.enable = true;
 
   desktops.dwl.enable = true;
 
