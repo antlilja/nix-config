@@ -83,6 +83,10 @@ in
       dwmblocks
     ];
 
+    home.extraOptions.programs.bash.shellAliases = {
+      clone = "alacritty --working-directory $(pwd) & disown";
+    };
+
     home.extraOptions.home.file.".xinitrc".text = cfg.xInitExtra + ''
       ${pkgs.xorg.xsetroot}/bin/xsetroot -bg black
       ${pkgs.dwmblocks}/bin/dwmblocks &
