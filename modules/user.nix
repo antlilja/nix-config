@@ -31,13 +31,13 @@ in
 
   config = {
     users.mutableUsers = false;
-    users.users.root.passwordFile = "${cfg.passwordsPath}/root";
+    users.users.root.hashedPasswordFile = "${cfg.passwordsPath}/root";
 
     users.users.${cfg.name} = {
       isNormalUser = true;
       group = "users";
       extraGroups = [ "wheel" ];
-      passwordFile = "${cfg.passwordsPath}/${cfg.name}";
+      hashedPasswordFile = "${cfg.passwordsPath}/${cfg.name}";
     };
 
     home.extraOptions.xdg = {
