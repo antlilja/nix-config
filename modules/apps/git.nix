@@ -18,6 +18,7 @@ in
         userEmail = config.user.email;
         ignores = mkIf config.apps.direnv.enable [
           ".direnv"
+          ".envrc"
         ];
         extraConfig = {
           init.defaultBranch = "main";
