@@ -18,37 +18,10 @@ in
   config = mkIf cfg.enable {
     nixpkgs.overlays = [
       (self: super: {
-        dwm = super.dwm.overrideAttrs (oldAttrs: rec {
-          configFile = super.writeText "config.h" (builtins.readFile ./config.def.h);
-          postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h";
-        });
-      })
-      (self: super: {
-        dwmblocks = super.dwmblocks.overrideAttrs (oldAttrs: rec {
-          configFile = super.writeText "blocks.h" (if cfg.displayBatteryStatus then ''
-            static const Block blocks[] = {
-            	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-            	{"", "echo $(cat /sys/class/power_supply/BAT0/status) $(cat /sys/class/power_supply/BAT0/capacity)",	60,	0},
-            	{"", "wpctl get-volume @DEFAULT_SINK@ | awk -F. '{ print $NF \"%\" }'",	60,	10},
-            	{"", "date '+%d/%m/%Y %H:%M'",	60,	0},
-            };
-            
-            //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-            static char delim[] = " | ";
-            static unsigned int delimLen = 5;
-          '' else ''
-            static const Block blocks[] = {
-            	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
-            	{"", "wpctl get-volume @DEFAULT_SINK@ | awk -F. '{ print $NF \"%\" }'",	60,	10},
-            	{"", "date '+%d/%m/%Y %H:%M'",	60,	0},
-            };
-            
-            //sets delimeter between status commands. NULL character ('\0') means no delimeter.
-            static char delim[] = " | ";
-            static unsigned int delimLen = 5;
-          '');
-          postPatch = "${oldAttrs.postPatch}\n cp ${configFile} blocks.def.h";
-        });
+        dwm = super.dwm.override { conf = ./config.def.h; };
+        dwmblocks = super.dwmblocks.override { 
+          conf = if cfg.displayBatteryStatus then ./blocks_with_battery.h else ./blocks_without_battery.h; 
+        };
       })
     ];
 
