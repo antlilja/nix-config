@@ -32,21 +32,15 @@ in
   config = mkIf cfg.enable {
     nixpkgs.overlays = [
       (self: super: {
-        dwl = super.dwl.overrideAttrs (oldAttrs: rec {
-          configFile = super.writeText "dwl.h" (builtins.readFile ./dwl.h);
-          configMkFile = super.writeText "dwl.mk" (builtins.readFile ./dwl.mk);
+        dwl = (super.dwl.overrideAttrs (oldAttrs: rec {
           patches = [
             (pkgs.fetchpatch {
-              url = "https://github.com/djpohly/dwl/compare/main...dm1tz:04-autostart.patch";
-              hash = "sha256-IuWsAeQIOkvM9a9Pjdw+iI8GUbP3vi9m7oxdhuT6YVY=";
+              url = "https://codeberg.org/dwl/dwl-patches/raw/commit/4cf16ae5c51aa6db34b656fc2b0fd536100c481b/autostart/autostart.patch";
+              hash = "sha256-OGGqnTIpM5bZRUY5j1r8Zy2cDQiLlZKURW5gN56lehY=";
             })
           ];
-          postPatch = "${oldAttrs.postPatch}\n cp ${configFile} config.def.h\n cp ${configMkFile} config.mk";
-        });
-        somebar = super.somebar.overrideAttrs (oldAttrs: rec {
-          configFile = super.writeText "somebar.hpp" (builtins.readFile ./somebar.hpp);
-          prePatch = "cp ${configFile} src/config.def.hpp\n ${oldAttrs.prePatch}";
-        });
+        })).override { conf = ./dwl.h; };
+        somebar = super.somebar.override { conf = ./somebar.hpp; };
       })
     ];
 
