@@ -22,5 +22,6 @@
     ./apps/slack.nix
     ./apps/spotify.nix
     ./apps/steam.nix
+    ./apps/podman.nix
   ];
 }
