@@ -28,8 +28,10 @@ in
     services.xserver = {
       enable = true;
       displayManager.startx.enable = true;
-      layout = "se";
-      xkbOptions = "ctrl:nocaps";
+      xkb = {
+        layout = "se";
+        options = "ctrl:nocaps";
+      };
       libinput = mkIf cfg.hasTouchpad {
         enable = true;
         touchpad = {
