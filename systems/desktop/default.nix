@@ -15,7 +15,7 @@
   desktops.dwm = {
     enable = true;
     xInitExtra = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --left-of DP-4
+      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --left-of DP-4 --auto
     '';
   };
 
