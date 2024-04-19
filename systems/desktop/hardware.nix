@@ -46,10 +46,17 @@
   swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
 
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl = {
-    enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+    };
+    nvidia = {
+      open = false;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+    };
   };
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
