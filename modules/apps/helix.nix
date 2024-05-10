@@ -20,6 +20,7 @@ in
           };
           idle-timeout = 50;
           bufferline = "always";
+          lsp.display-inlay-hints = true;
         };
         keys.normal.esc = [ "collapse_selection" "keep_primary_selection" ];
       };
