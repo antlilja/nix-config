@@ -24,6 +24,19 @@ in
         };
         keys.normal.esc = [ "collapse_selection" "keep_primary_selection" ];
       };
+      languages = {
+        language = [{
+          name = "glsl";
+          auto-format = true;
+          file-types = [ "glsl" "vert" "frag" "comp" "rchit" "rgen" "rmiss" ];
+          language-servers = [ "glsl_analyzer" ];
+        }];
+        language-server = {
+          glsl_analyzer = {
+            command = "glsl_analyzer";
+          };
+        };
+      };
     };
   };
 }
