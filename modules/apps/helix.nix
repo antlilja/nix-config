@@ -25,12 +25,18 @@ in
         keys.normal.esc = [ "collapse_selection" "keep_primary_selection" ];
       };
       languages = {
-        language = [{
+        language = [
+        {
           name = "glsl";
           auto-format = true;
           file-types = [ "glsl" "vert" "frag" "comp" "rchit" "rgen" "rmiss" ];
           language-servers = [ "glsl_analyzer" ];
-        }];
+        }
+        {
+          name = "c";
+          auto-format = true;
+        }
+        ];
         language-server = {
           glsl_analyzer = {
             command = "glsl_analyzer";
