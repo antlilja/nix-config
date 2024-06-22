@@ -40,7 +40,14 @@ in
             })
           ];
         })).override { conf = ./dwl.h; };
-        somebar = super.somebar.override { conf = ./somebar.hpp; };
+        somebar = (super.somebar.overrideAttrs(oldAttrs: rec {
+          src = pkgs.fetchFromSourcehut {
+            owner = "~raphi";
+            repo = "somebar";
+            rev = "6572b98d697fef50473366bf4b598e66c0be3e54";
+            sha256 = "sha256-4s9tj5+lOkYjF5cuFRrR1R1S5nzqvZFq9SUAFuA8QXc=";
+          };
+        })).override { conf = ./somebar.hpp; };
       })
     ];
 
