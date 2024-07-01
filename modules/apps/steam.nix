@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 with lib;
 let 
@@ -11,6 +11,9 @@ in
 
   config = mkIf cfg.enable {
     programs.steam.enable = true;
+    environment.systemPackages = with pkgs; [
+      protontricks
+    ];
     impermanence.userDirs = [
       ".steam"
       ".local/share/Steam"
