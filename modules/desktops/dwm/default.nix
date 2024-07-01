@@ -38,6 +38,9 @@ in
           tapping = false;
         };
       };
+      monitorSection = ''
+        Option "DPMS" "false"
+      '';
     };
 
     services.greetd = {
