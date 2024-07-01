@@ -17,6 +17,10 @@
     xInitExtra = ''
       ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --left-of DP-4 --auto
     '';
+    xScreenSection = ''
+      Option "nvidiaXineramaInfoOrder" "DP-4"
+      Option "metamodes" "DP-4: 2560x1440_144 +1920+0, DP-2: 1920x1080_100 +0+0"
+    '';
   };
 
   apps = {

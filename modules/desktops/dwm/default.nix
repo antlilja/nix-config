@@ -13,6 +13,11 @@ in
       default = "";
       description = ".xsession init extra";
     };
+    xScreenSection = mkOption {
+      type = types.lines;
+      default = '''';
+      description = "xorg.conf screen section";
+    };
   };
 
   config = mkIf cfg.enable {
@@ -41,6 +46,7 @@ in
       monitorSection = ''
         Option "DPMS" "false"
       '';
+      screenSection = cfg.xScreenSection;
     };
 
     services.greetd = {
