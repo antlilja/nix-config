@@ -12,7 +12,16 @@
     impermanence.url = "github:nix-community/impermanence";
   };
 
-  outputs = inputs: {    
+  outputs = inputs:
+  let
+    pkgs = import inputs.nixpkgs {system = "x86_64-linux"; };
+  in
+  {
+    devShells."x86_64-linux".default = pkgs.mkShell {
+      nativeBuildInputs = with pkgs; [
+        nixpkgs-fmt
+      ];
+    };
     nixosConfigurations = {
       desktop = inputs.nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
