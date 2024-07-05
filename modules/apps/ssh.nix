@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.ssh;
-in 
+in
 {
   options.apps.ssh = {
     enable = mkEnableOption "Enable SSH";

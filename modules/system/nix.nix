@@ -1,7 +1,7 @@
 { lib, config, inputs, ... }:
 
 with lib;
-  let cfg = config.system.nix;
+let cfg = config.system.nix;
 in
 {
   config = {

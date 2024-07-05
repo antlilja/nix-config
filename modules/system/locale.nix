@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 with lib;
-  let cfg = config.system.locale;
+let cfg = config.system.locale;
 in
 {
   config = {

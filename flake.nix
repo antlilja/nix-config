@@ -4,7 +4,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-24.05";
 
-    home-manager ={
+    home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -13,38 +13,38 @@
   };
 
   outputs = inputs:
-  let
-    pkgs = import inputs.nixpkgs {system = "x86_64-linux"; };
-  in
-  {
-    devShells."x86_64-linux".default = pkgs.mkShell {
-      nativeBuildInputs = with pkgs; [
-        nixpkgs-fmt
-      ];
-    };
-    nixosConfigurations = {
-      desktop = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = with inputs; [
-          ./systems/desktop
-          ./modules
-          { networking.hostName = "desktop"; }
-          home-manager.nixosModules.home-manager
-          impermanence.nixosModule
+    let
+      pkgs = import inputs.nixpkgs { system = "x86_64-linux"; };
+    in
+    {
+      devShells."x86_64-linux".default = pkgs.mkShell {
+        nativeBuildInputs = with pkgs; [
+          nixpkgs-fmt
         ];
-        specialArgs = { inherit inputs; };
       };
-      laptop = inputs.nixpkgs.lib.nixosSystem {
-        system = "x86_64-linux";
-        modules = with inputs; [
-          ./systems/laptop
-          ./modules
-          { networking.hostName = "laptop"; }
-          home-manager.nixosModules.home-manager
-          impermanence.nixosModule
-        ];
-        specialArgs = { inherit inputs; };
+      nixosConfigurations = {
+        desktop = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = with inputs; [
+            ./systems/desktop
+            ./modules
+            { networking.hostName = "desktop"; }
+            home-manager.nixosModules.home-manager
+            impermanence.nixosModule
+          ];
+          specialArgs = { inherit inputs; };
+        };
+        laptop = inputs.nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          modules = with inputs; [
+            ./systems/laptop
+            ./modules
+            { networking.hostName = "laptop"; }
+            home-manager.nixosModules.home-manager
+            impermanence.nixosModule
+          ];
+          specialArgs = { inherit inputs; };
+        };
       };
     };
-  };
 }

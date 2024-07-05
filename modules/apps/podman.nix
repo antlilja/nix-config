@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 with lib;
-  let cfg = config.apps.podman;
+let cfg = config.apps.podman;
 in
 {
   options.apps.podman.enable = mkEnableOption "Podman";

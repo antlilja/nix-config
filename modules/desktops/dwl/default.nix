@@ -1,28 +1,28 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-  let 
-    cfg = config.desktops.dwl;
-    someblocks = with pkgs; stdenv.mkDerivation rec {
-      pname = "someblocks";
-      version = "1.0.1";
+let
+  cfg = config.desktops.dwl;
+  someblocks = with pkgs; stdenv.mkDerivation rec {
+    pname = "someblocks";
+    version = "1.0.1";
 
-      src = fetchFromSourcehut {
-        owner = "~raphi";
-        repo = "someblocks";
-        rev = version;
-        sha256 = "sha256-pUdiEyhqLx3aMjN0D0y0ykeXF3qjJO0mM8j1gLIf+ww=";
-      };
+    src = fetchFromSourcehut {
+      owner = "~raphi";
+      repo = "someblocks";
+      rev = version;
+      sha256 = "sha256-pUdiEyhqLx3aMjN0D0y0ykeXF3qjJO0mM8j1gLIf+ww=";
+    };
 
-      configFile = ./someblocks.h;
-      postPatch = "cp ${configFile} blocks.def.h";
+    configFile = ./someblocks.h;
+    postPatch = "cp ${configFile} blocks.def.h";
 
-      dontConfigure = true;
+    dontConfigure = true;
 
-      NIX_CFLAGS_COMPILE = [ "-Wno-unused-result" ];
+    NIX_CFLAGS_COMPILE = [ "-Wno-unused-result" ];
 
-      installFlags = [ "PREFIX=$(out)" ];
-    }; 
+    installFlags = [ "PREFIX=$(out)" ];
+  };
 in
 {
   options.desktops.dwl = {
@@ -40,7 +40,7 @@ in
             })
           ];
         })).override { conf = ./dwl.h; };
-        somebar = (super.somebar.overrideAttrs(oldAttrs: rec {
+        somebar = (super.somebar.overrideAttrs (oldAttrs: rec {
           src = pkgs.fetchFromSourcehut {
             owner = "~raphi";
             repo = "somebar";
@@ -58,7 +58,7 @@ in
       somebar
       someblocks
       wlr-randr
-    ]; 
+    ];
 
     home.extraOptions.programs.foot = {
       enable = true;
@@ -66,25 +66,25 @@ in
         main.font = "monospace:size=18";
       };
     };
-    
+
     services.greetd = {
       enable = true;
-	    settings = rec {
-	      initial_session = {
-	        command = "${pkgs.dwl}/bin/dwl -s ${pkgs.somebar}/bin/somebar";
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.dwl}/bin/dwl -s ${pkgs.somebar}/bin/somebar";
           user = config.user.name;
-	      };
+        };
         default_session = initial_session;
-	    };
+      };
     };
 
     services.dbus.enable = true;
-	  xdg.portal = {
-	    enable = true;
-	    wlr.enable = true;
-	    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal = {
+      enable = true;
+      wlr.enable = true;
+      extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
       config.common.default = "*";
-	  };
+    };
 
     fonts.packages = with pkgs; [
       noto-fonts

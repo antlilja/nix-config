@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.develop;
-in 
+in
 {
   options.apps.develop = {
     enable = mkEnableOption "Enable development environment";

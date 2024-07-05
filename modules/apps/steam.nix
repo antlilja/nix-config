@@ -1,9 +1,9 @@
 { config, pkgs, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.steam;
-in 
+in
 {
   options.apps.steam = {
     enable = mkEnableOption "Enable Steam";

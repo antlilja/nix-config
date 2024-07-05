@@ -1,9 +1,9 @@
 { config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.direnv;
-in 
+in
 {
   options.apps.direnv = {
     enable = mkEnableOption "Enable direnv and nix-direnv";

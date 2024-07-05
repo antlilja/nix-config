@@ -2,7 +2,8 @@
 
 {
   imports =
-    [ (modulesPath + "/installer/scan/not-detected.nix")
+    [
+      (modulesPath + "/installer/scan/not-detected.nix")
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -13,37 +14,37 @@
   boot.initrd.luks.devices."enc".device = "/dev/disk/by-label/encroot";
 
   fileSystems."/" = {
-      device = "/dev/mapper/enc";
-      fsType = "btrfs";
-      options = [ "subvol=root" "compress=lzo" "noatime" ];
+    device = "/dev/mapper/enc";
+    fsType = "btrfs";
+    options = [ "subvol=root" "compress=lzo" "noatime" ];
   };
 
   fileSystems."/nix" = {
-      device = "/dev/mapper/enc";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=lzo" "noatime" ];
+    device = "/dev/mapper/enc";
+    fsType = "btrfs";
+    options = [ "subvol=nix" "compress=lzo" "noatime" ];
   };
 
   fileSystems."/persist" = {
-      device = "/dev/mapper/enc";
-      fsType = "btrfs";
-      options = [ "subvol=persist" "compress=lzo" "noatime" ];
-      neededForBoot = true;
+    device = "/dev/mapper/enc";
+    fsType = "btrfs";
+    options = [ "subvol=persist" "compress=lzo" "noatime" ];
+    neededForBoot = true;
   };
 
   fileSystems."/var/log" = {
-      device = "/dev/mapper/enc";
-      fsType = "btrfs";
-      options = [ "subvol=log" "compress=lzo" "noatime" ];
-      neededForBoot = true;
+    device = "/dev/mapper/enc";
+    fsType = "btrfs";
+    options = [ "subvol=log" "compress=lzo" "noatime" ];
+    neededForBoot = true;
   };
 
   fileSystems."/boot" = {
-      device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
   };
 
-  swapDevices = [ { device = "/dev/disk/by-label/swap"; } ];
+  swapDevices = [{ device = "/dev/disk/by-label/swap"; }];
 
   networking.useDHCP = lib.mkDefault true;
 

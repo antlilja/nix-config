@@ -1,7 +1,7 @@
 { options, lib, config, ... }:
 
 with lib;
-let 
+let
   cfg = config.system.networkmanager;
 in
 {

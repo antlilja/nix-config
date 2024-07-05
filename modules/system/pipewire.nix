@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 with lib;
-  let cfg = config.system.pipewire;
+let cfg = config.system.pipewire;
 in
 {
   options.system.pipewire = {

@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.slack;
-in 
+in
 {
   options.apps.slack = {
     enable = mkEnableOption "Enable Slack";

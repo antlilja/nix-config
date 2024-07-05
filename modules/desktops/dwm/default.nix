@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 
 with lib;
-  let cfg = config.desktops.dwm;
+let cfg = config.desktops.dwm;
 in
 {
   options.desktops.dwm = {
@@ -24,8 +24,8 @@ in
     nixpkgs.overlays = [
       (self: super: {
         dwm = super.dwm.override { conf = ./config.def.h; };
-        dwmblocks = super.dwmblocks.override { 
-          conf = if cfg.displayBatteryStatus then ./blocks_with_battery.h else ./blocks_without_battery.h; 
+        dwmblocks = super.dwmblocks.override {
+          conf = if cfg.displayBatteryStatus then ./blocks_with_battery.h else ./blocks_without_battery.h;
         };
       })
     ];
@@ -51,13 +51,13 @@ in
 
     services.greetd = {
       enable = true;
-	    settings = rec {
-	      initial_session = {
-	        command = "${pkgs.xorg.xinit}/bin/startx";
+      settings = rec {
+        initial_session = {
+          command = "${pkgs.xorg.xinit}/bin/startx";
           user = config.user.name;
-	      };
+        };
         default_session = initial_session;
-	    };
+      };
     };
 
     environment.systemPackages = with pkgs; [

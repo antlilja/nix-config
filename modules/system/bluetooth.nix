@@ -1,7 +1,7 @@
 { pkgs, lib, config, ... }:
 
 with lib;
-  let cfg = config.system.bluetooth;
+let cfg = config.system.bluetooth;
 in
 {
   options.system.bluetooth = {

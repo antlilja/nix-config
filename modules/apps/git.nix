@@ -1,7 +1,7 @@
 { options, lib, config, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.git;
 in
 {
@@ -26,7 +26,7 @@ in
         };
       };
       lazygit.enable = cfg.lazygit;
-    };    
+    };
 
     apps.ssh.matchBlocks = {
       "github.com" = {

@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.firefox;
-in 
+in
 {
   options.apps.firefox = {
     enable = mkEnableOption "Enable Firefox";

@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.gpg;
-in 
+in
 {
   options.apps.gpg = {
     enable = mkEnableOption "Enable GPG";

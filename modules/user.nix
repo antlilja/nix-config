@@ -1,7 +1,7 @@
 { lib, config, ... }:
 
 with lib;
-let 
+let
   cfg = config.user;
 in
 {

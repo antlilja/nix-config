@@ -1,7 +1,7 @@
 { options, pkgs, lib, config, ... }:
 
 with lib;
-let 
+let
   cfg = config.impermanence;
 in
 {
@@ -16,28 +16,28 @@ in
     };
     rootDirs = mkOption {
       type = types.listOf types.attrs;
-      default = [];
+      default = [ ];
       description = ''
         Root directories to persist
       '';
     };
     rootFiles = mkOption {
       type = types.listOf types.attrs;
-      default = [];
+      default = [ ];
       description = ''
         Root files to persist
       '';
     };
     userDirs = mkOption {
       type = types.listOf types.attrs;
-      default = [];
+      default = [ ];
       description = ''
         User directories to persist
       '';
     };
     userFiles = mkOption {
       type = types.listOf types.attrs;
-      default = [];
+      default = [ ];
       description = ''
         User files to persist
       '';

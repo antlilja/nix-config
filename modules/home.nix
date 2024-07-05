@@ -10,7 +10,7 @@ in
       default = { };
       description = ''
         Options to pass directly to home-manager
-      '';      
+      '';
     };
   };
 
