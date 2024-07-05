@@ -1,9 +1,9 @@
 { pkgs, config, lib, ... }:
 
 with lib;
-let 
+let
   cfg = config.apps.helix;
-in 
+in
 {
   options.apps.helix.enable = mkEnableOption "Helix text editor";
 
@@ -26,16 +26,21 @@ in
       };
       languages = {
         language = [
-        {
-          name = "glsl";
-          auto-format = true;
-          file-types = [ "glsl" "vert" "frag" "comp" "rchit" "rgen" "rmiss" ];
-          language-servers = [ "glsl_analyzer" ];
-        }
-        {
-          name = "c";
-          auto-format = true;
-        }
+          {
+            name = "nix";
+            auto-format = true;
+            formatter.command = "nixpkgs-fmt";
+          }
+          {
+            name = "glsl";
+            auto-format = true;
+            file-types = [ "glsl" "vert" "frag" "comp" "rchit" "rgen" "rmiss" ];
+            language-servers = [ "glsl_analyzer" ];
+          }
+          {
+            name = "c";
+            auto-format = true;
+          }
         ];
         language-server = {
           glsl_analyzer = {
