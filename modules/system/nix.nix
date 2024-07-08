@@ -1,4 +1,4 @@
-{ lib, config, inputs, ... }:
+{ lib, config, inputs, pkgs, ... }:
 
 with lib;
 let cfg = config.system.nix;
@@ -13,6 +13,11 @@ in
       registry.nixpkgs.flake = inputs.nixpkgs;
     };
     nixpkgs.config.allowUnfree = true;
+
+    environment.systemPackages = with pkgs; [
+      nil
+      nixpkgs-fmt
+    ];
 
     impermanence.userDirs = [
       ".cache/nix"
