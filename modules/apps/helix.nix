@@ -41,10 +41,23 @@ in
             name = "c";
             auto-format = true;
           }
+          {
+            name = "verilog";
+            auto-format = true;
+            file-types = [ "verilog" "v" "vlg" "vh" ];
+            formatter = {
+              command = "verible-verilog-format";
+              args = [ "-" ];
+            };
+            language-servers = [ "verible-verilog-ls" ];
+          }
         ];
         language-server = {
           glsl_analyzer = {
             command = "glsl_analyzer";
+          };
+          verible-verilog-ls = {
+            command = "verible-verilog-ls";
           };
         };
       };
