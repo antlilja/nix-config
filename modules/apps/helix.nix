@@ -34,7 +34,7 @@ in
           {
             name = "glsl";
             auto-format = true;
-            file-types = [ "glsl" "vert" "frag" "comp" "rchit" "rgen" "rmiss" ];
+            file-types = [ "glsl" "vert" "frag" "comp" "rchit" "rgen" "rmiss" "rcall" ];
             language-servers = [ "glsl_analyzer" ];
           }
           {
