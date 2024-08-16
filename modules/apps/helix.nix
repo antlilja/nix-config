@@ -39,6 +39,12 @@ in
           }
           {
             name = "c";
+            file-types = [ "c" "h" ];
+            auto-format = true;
+          }
+          {
+            name = "cpp";
+            file-types = [ "cpp" "hpp" ];
             auto-format = true;
           }
           {
