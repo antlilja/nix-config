@@ -40,6 +40,12 @@ in
       hashedPasswordFile = "${cfg.passwordsPath}/${cfg.name}";
     };
 
+    impermanence = {
+      rootDirs = [
+        "/var/lib/nixos"
+      ];
+    };
+
     home.extraOptions.xdg = {
       enable = true;
       userDirs = {
