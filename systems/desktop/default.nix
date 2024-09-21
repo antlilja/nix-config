@@ -33,7 +33,9 @@
     steam.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [ ];
+  environment.systemPackages = with pkgs; [
+    gimp
+  ];
 
   impermanence = {
     enable = true;
