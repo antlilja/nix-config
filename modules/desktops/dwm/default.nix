@@ -30,18 +30,19 @@ in
       })
     ];
 
+    services.libinput = mkIf cfg.hasTouchpad {
+      enable = true;
+      touchpad = {
+        tapping = false;
+      };
+    };
+
     services.xserver = {
       enable = true;
       displayManager.startx.enable = true;
       xkb = {
         layout = "se";
         options = "ctrl:nocaps";
-      };
-      libinput = mkIf cfg.hasTouchpad {
-        enable = true;
-        touchpad = {
-          tapping = false;
-        };
       };
       monitorSection = ''
         Option "DPMS" "false"
