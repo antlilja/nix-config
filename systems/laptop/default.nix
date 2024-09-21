@@ -13,16 +13,17 @@
   system.pipewire.enable = true;
   system.bluetooth.enable = true;
 
-  desktops.dwl.enable = true;
+  desktops.dwm = {
+    enable = true;
+    displayBatteryStatus = true;
+    hasTouchpad = true;
+  };
 
   apps = {
     develop.enable = true;
     firefox.enable = true;
     discord.enable = true;
-    slack = {
-      enable = true;
-      wayland = true;
-    };
+    slack.enable = true;
     spotify.enable = true;
   };
 
