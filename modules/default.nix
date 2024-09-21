@@ -23,5 +23,6 @@
     ./apps/spotify.nix
     ./apps/steam.nix
     ./apps/podman.nix
+    ./apps/common.nix
   ];
 }
