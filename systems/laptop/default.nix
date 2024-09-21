@@ -20,6 +20,7 @@
   };
 
   apps = {
+    common.enable = true;
     develop.enable = true;
     firefox.enable = true;
     discord.enable = true;
@@ -28,7 +29,6 @@
   };
 
   environment.systemPackages = with pkgs; [
-    htop
     xdg-utils
   ];
 
