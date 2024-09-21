@@ -24,6 +24,7 @@
   };
 
   apps = {
+    common.enable = true;
     develop.enable = true;
     firefox.enable = true;
     discord.enable = true;
@@ -32,9 +33,7 @@
     steam.enable = true;
   };
 
-  environment.systemPackages = with pkgs; [
-    htop
-  ];
+  environment.systemPackages = with pkgs; [ ];
 
   impermanence = {
     enable = true;
