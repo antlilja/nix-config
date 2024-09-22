@@ -25,7 +25,13 @@ in
           core.editor = mkIf config.apps.helix.enable "hx";
         };
       };
-      lazygit.enable = cfg.lazygit;
+
+      lazygit = mkIf cfg.lazygit {
+        enable = true;
+        settings.gui = {
+          showRandomTip = false;
+        };
+      };
     };
 
     apps.ssh.matchBlocks = {
