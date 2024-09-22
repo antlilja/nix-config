@@ -32,9 +32,7 @@ in
 
     services.libinput = mkIf cfg.hasTouchpad {
       enable = true;
-      touchpad = {
-        tapping = false;
-      };
+      touchpad.tapping = true;
     };
 
     services.xserver = {
