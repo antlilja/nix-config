@@ -14,6 +14,7 @@ in
     home.extraOptions.programs = {
       git = {
         enable = true;
+        lfs.enable = true;
         userName = config.user.name;
         userEmail = config.user.email;
         ignores = mkIf config.apps.direnv.enable [
