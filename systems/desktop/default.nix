@@ -31,6 +31,7 @@
     slack.enable = true;
     spotify.enable = true;
     steam.enable = true;
+    podman.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
