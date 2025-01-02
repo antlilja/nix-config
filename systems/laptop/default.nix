@@ -26,6 +26,8 @@
     discord.enable = true;
     slack.enable = true;
     spotify.enable = true;
+    podman.enable = true;
+    steam.enable = true;
   };
 
   environment.systemPackages = with pkgs; [
