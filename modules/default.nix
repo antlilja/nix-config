@@ -24,5 +24,6 @@
     ./apps/steam.nix
     ./apps/podman.nix
     ./apps/common.nix
+    ./apps/ghostty.nix
   ];
 }
