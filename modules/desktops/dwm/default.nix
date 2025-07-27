@@ -61,14 +61,11 @@ in
 
     environment.systemPackages = with pkgs; [
       dwm
-      alacritty
       dmenu
       dwmblocks
     ];
 
-    home.extraOptions.programs.bash.shellAliases = {
-      clone = "alacritty --working-directory $(pwd) & disown";
-    };
+    apps.ghostty.enable = true;
 
     home.extraOptions.home.file.".xinitrc".text = cfg.xInitExtra + ''
       ${pkgs.xorg.xsetroot}/bin/xsetroot -bg black
