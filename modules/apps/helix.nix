@@ -57,6 +57,11 @@ in
             };
             language-servers = [ "verible-verilog-ls" ];
           }
+          {
+            name = "zig";
+            auto-format = true;
+            language-servers = [ "zls" ];
+          }
         ];
         language-server = {
           glsl_analyzer = {
