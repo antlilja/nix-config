@@ -38,6 +38,8 @@
     gimp
   ];
 
+  system.tailscale.enable = true;
+
   impermanence = {
     enable = true;
     userDirs = [
