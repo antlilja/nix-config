@@ -8,6 +8,7 @@
     ./system/pipewire.nix
     ./system/bluetooth.nix
     ./system/networkmanager.nix
+    ./system/tailscale.nix
     ./desktops/dwm
     ./desktops/dwl
     ./apps/git.nix
