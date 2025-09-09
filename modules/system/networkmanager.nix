@@ -10,7 +10,11 @@ in
   };
 
   config = mkIf cfg.enable {
-    networking.networkmanager.enable = true;
+    networking = {
+      networkmanager.enable = true;
+      nftables.enable = true;
+    };
+
     impermanence.rootDirs = [
       "/etc/NetworkManager"
     ];
