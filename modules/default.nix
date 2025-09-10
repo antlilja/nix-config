@@ -2,6 +2,7 @@
   imports = [
     ./user.nix
     ./home.nix
+    ./security.nix
     ./impermanence.nix
     ./system/nix.nix
     ./system/locale.nix
