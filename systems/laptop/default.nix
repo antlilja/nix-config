@@ -12,6 +12,7 @@
   system.networkmanager.enable = true;
   system.pipewire.enable = true;
   system.bluetooth.enable = true;
+  system.tailscale.enable = true;
 
   desktops.dwm = {
     enable = true;
