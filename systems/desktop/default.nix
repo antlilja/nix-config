@@ -12,15 +12,12 @@
   system.networkmanager.enable = true;
   system.pipewire.enable = true;
 
-  desktops.dwm = {
+  desktops.hyprland = {
     enable = true;
-    xInitExtra = ''
-      ${pkgs.xorg.xrandr}/bin/xrandr --output DP-2 --left-of DP-4 --auto
-    '';
-    xScreenSection = ''
-      Option "nvidiaXineramaInfoOrder" "DP-4"
-      Option "metamodes" "DP-4: 2560x1440_144 +1920+0, DP-2: 1920x1080_100 +0+0"
-    '';
+    monitor = [
+      "DP-2, 1920x1080@60, 0x0, 1"
+      "DP-3, 2560x1440@144, 1920x0, 1"
+    ];
   };
 
   apps = {
