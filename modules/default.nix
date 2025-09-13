@@ -12,6 +12,7 @@
     ./system/tailscale.nix
     ./desktops/dwm
     ./desktops/dwl
+    ./desktops/hyprland
     ./apps/git.nix
     ./apps/bash.nix
     ./apps/ssh.nix
