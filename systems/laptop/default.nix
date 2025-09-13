@@ -20,6 +20,7 @@
   };
 
   apps = {
+    ghostty.enable = true;
     common.enable = true;
     develop.enable = true;
     firefox.enable = true;

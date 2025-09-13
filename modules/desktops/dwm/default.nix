@@ -65,8 +65,6 @@ in
       dwmblocks
     ];
 
-    apps.ghostty.enable = true;
-
     home.extraOptions.home.file.".xinitrc".text = cfg.xInitExtra + ''
       ${pkgs.xorg.xsetroot}/bin/xsetroot -bg black
       ${pkgs.dwmblocks}/bin/dwmblocks &
