@@ -24,6 +24,7 @@ in
         };
       };
     };
+    bluetooth-status = mkEnableOption "Enable bluetooth status in status bar";
   };
 
   config = mkIf cfg.enable {
@@ -154,6 +155,7 @@ in
           main = {
             modules-left = [ "hyprland/workspaces" ];
             modules-right =
+              (lib.optionals (cfg.bluetooth-status) [ "bluetooth" ]) ++
               (lib.optionals (cfg.battery-status.enable) [ "battery" ]) ++
               [ "wireplumber" "clock" ];
             clock = {
@@ -168,6 +170,10 @@ in
               bat = cfg.battery-status.bat;
               format-charging = " {capacity}%";
               format-discharging = " {capacity}%";
+            };
+            bluetooth = mkIf cfg.bluetooth-status {
+              format = "";
+              on-click = "blueman-manager";
             };
             "hyprland/workspaces" = {
               format = "{icon}";
@@ -207,6 +213,7 @@ in
 
           #clock,
           #battery,
+          #bluetooth,
           #wireplumber {
               padding-left: 5px;
               padding-right: 5px;

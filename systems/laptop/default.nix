@@ -20,6 +20,7 @@
       enable = true;
       bat = "BAT0";
     };
+    bluetooth-status = true;
   };
 
   apps = {
