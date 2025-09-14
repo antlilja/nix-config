@@ -232,7 +232,6 @@ in
           }
 
           #workspaces button {
-              font-weight: bold;
               border-top: 2px solid transparent;
               padding-bottom: 2px;
               padding-left: 10px;
@@ -240,10 +239,23 @@ in
               color: #888888;
           }
 
+          #workspaces button.persistent {
+              font-weight: bold;
+              color: white;
+              background-color: #323232;
+          }
+
+          #workspaces button.empty {
+              font-weight: normal;
+              color: #888888;
+              background-color: #323232;
+          }
+
           #workspaces button.active {
-              border-color: #4c7899;
+              font-weight: bold;
               color: white;
               background-color: #285577;
+              border-color: #4c7899;
           }
         '';
       };
