@@ -29,8 +29,9 @@ in
 
       lazygit = mkIf cfg.lazygit {
         enable = true;
-        settings.gui = {
+        settings = {
           showRandomTip = false;
+          disableStartupPopups = true;
         };
       };
     };
