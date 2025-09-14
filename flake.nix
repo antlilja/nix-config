@@ -36,6 +36,17 @@
         ];
         specialArgs = { inherit inputs; };
       };
+      server = inputs.nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = with inputs; [
+          ./systems/server
+          ./modules
+          { networking.hostName = "server"; }
+          home-manager.nixosModules.home-manager
+          impermanence.nixosModule
+        ];
+        specialArgs = { inherit inputs; };
+      };
     };
   };
 }
