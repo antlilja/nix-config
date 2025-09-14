@@ -29,5 +29,6 @@
     ./apps/common.nix
     ./apps/ghostty.nix
     ./tailscale-containers.nix
+    ./tailscale-containers/immich.nix
   ];
 }
