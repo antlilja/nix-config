@@ -12,6 +12,18 @@ in
       default = [ ];
       description = "Monitors";
     };
+    battery-status = mkOption {
+      default = { };
+      type = types.submodule {
+        options = {
+          enable = mkEnableOption "Enable battery status in status bar";
+          bat = mkOption {
+            type = types.str;
+            description = "BAT in /sys/class/power_supply";
+          };
+        };
+      };
+    };
   };
 
   config = mkIf cfg.enable {
@@ -141,7 +153,9 @@ in
         settings = {
           main = {
             modules-left = [ "hyprland/workspaces" ];
-            modules-right = [ "wireplumber" "clock" ];
+            modules-right =
+              (lib.optionals (cfg.battery-status.enable) [ "battery" ]) ++
+              [ "wireplumber" "clock" ];
             clock = {
               tooltip = false;
               format = "{:%H:%M %a %d-%m-%Y}";
@@ -149,6 +163,11 @@ in
             wireplumber = {
               tooltip = false;
               format-muted = "xx%";
+            };
+            battery = mkIf cfg.battery-status.enable {
+              bat = cfg.battery-status.bat;
+              format-charging = " {capacity}%";
+              format-discharging = " {capacity}%";
             };
             "hyprland/workspaces" = {
               format = "{icon}";
@@ -187,6 +206,7 @@ in
           }
 
           #clock,
+          #battery,
           #wireplumber {
               padding-left: 10px;
               padding-right: 10px;
@@ -230,6 +250,7 @@ in
       noto-fonts
       noto-fonts-emoji
       liberation_ttf
+      font-awesome
     ];
     services.greetd = {
       enable = true;
