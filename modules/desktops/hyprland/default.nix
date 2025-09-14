@@ -162,7 +162,7 @@ in
             };
             wireplumber = {
               tooltip = false;
-              format-muted = "xx%";
+              format-muted = "";
             };
             battery = mkIf cfg.battery-status.enable {
               bat = cfg.battery-status.bat;
@@ -208,23 +208,24 @@ in
           #clock,
           #battery,
           #wireplumber {
-              padding-left: 10px;
-              padding-right: 10px;
+              padding-left: 5px;
+              padding-right: 5px;
           }
 
           #clock {
               font-weight: bold;
           }
 
-          #wireplumber {
-              /* No styles */
+          #battery {
+              font-weight: bold;
           }
 
-          #window {
+          #wireplumber {
               font-weight: bold;
           }
 
           #workspaces button {
+              font-weight: bold;
               border-top: 2px solid transparent;
               padding-bottom: 2px;
               padding-left: 10px;
