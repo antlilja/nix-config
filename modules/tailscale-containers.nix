@@ -66,6 +66,7 @@ in
           }
           cfg-container.extraBindMounts
         ];
+        extraFlags = [ "-U" ];
         config = lib.mkMerge [
           {
             networking = {
