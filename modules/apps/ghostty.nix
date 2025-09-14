@@ -51,5 +51,7 @@ in
         };
       };
     };
+
+    apps.ssh.matchBlocks."*".setEnv.TERM = "xterm-256color";
   };
 }
