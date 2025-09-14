@@ -14,10 +14,12 @@
   system.bluetooth.enable = true;
   system.tailscale.enable = true;
 
-  desktops.dwm = {
+  desktops.hyprland = {
     enable = true;
-    displayBatteryStatus = true;
-    hasTouchpad = true;
+    battery-status = {
+      enable = true;
+      bat = "BAT0";
+    };
   };
 
   apps = {
