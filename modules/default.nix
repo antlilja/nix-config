@@ -31,5 +31,6 @@
     ./tailscale-containers.nix
     ./tailscale-containers/immich.nix
     ./tailscale-containers/gitea.nix
+    ./tailscale-containers/jellyfin.nix
   ];
 }
