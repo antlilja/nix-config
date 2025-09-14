@@ -35,20 +35,5 @@ in
         };
       };
     };
-
-    apps.ssh.matchBlocks = {
-      "github.com" = {
-        hostname = "github.com";
-        user = "antlilja";
-        identityFile = "~/.ssh/id_github";
-        identitiesOnly = true;
-      };
-      "gits-15.sys.kth.se" = {
-        hostname = "gits-15.sys.kth.se";
-        user = "antlilja";
-        identityFile = "~/.ssh/id_kth";
-        identitiesOnly = true;
-      };
-    };
   };
 }
