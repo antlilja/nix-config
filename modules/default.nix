@@ -28,5 +28,6 @@
     ./apps/podman.nix
     ./apps/common.nix
     ./apps/ghostty.nix
+    ./tailscale-containers.nix
   ];
 }
