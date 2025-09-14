@@ -30,5 +30,6 @@
     ./apps/ghostty.nix
     ./tailscale-containers.nix
     ./tailscale-containers/immich.nix
+    ./tailscale-containers/gitea.nix
   ];
 }
