@@ -53,7 +53,8 @@
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
     nvidia = {
-      open = false;
+      open = true;
+      modesetting.enable = true;
       package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
   };
